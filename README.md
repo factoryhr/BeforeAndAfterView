@@ -1,6 +1,8 @@
 # BeforeAndAfterView
 Library for images comparison
 
+![alt text](https://raw.githubusercontent.com/factoryhr/BeforeAndAfterView/master/BeforeAndAfterView.gif)
+
 **Usage**
 
 Add jitpack.io repository in your root build.gradle at the end of repositories:
