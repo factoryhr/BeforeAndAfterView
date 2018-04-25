@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BeforeAndAfterView">
+        <attr name="beforeImageSrc" format="reference" />
+        <attr name="afterImageSrc" format="reference" />
+        <attr name="beforeImageUrl" format="string" />
+        <attr name="afterImageUrl" format="string" />
+        <attr name="roundCorners" format="boolean" />
+        <attr name="cornerMask" format="reference" />
+        <attr name="progress" format="integer" />
+        <attr name="progressPaddingStart" format="dimension" />
+        <attr name="progressPaddingEnd" format="dimension" />
+        <attr name="progressDrawable" format="reference" />
+        <attr name="placeHolderSrc" format="reference" />
+    </declare-styleable>
+</resources>
