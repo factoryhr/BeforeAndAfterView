@@ -1,8 +1,8 @@
-//apply plugin: 'com.android.application'
+apply plugin: 'com.android.application'
 //TODO remove LAUNCHER filter
-apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.factoryhr'
+//apply plugin: 'com.android.library'
+//apply plugin: 'com.github.dcendents.android-maven'
+//group = 'com.github.factoryhr'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'

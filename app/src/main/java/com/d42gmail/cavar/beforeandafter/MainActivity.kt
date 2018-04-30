@@ -9,6 +9,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        beforeAndAfterView.loadImagesBySrc(R.drawable.image_after, R.drawable.image_before)
+        beforeAndAfterView.loadImagesByUrl("http://zg.plavatvornica.com/zrinjevac/now_then/1.jpg", "http://zg.plavatvornica.com/zrinjevac/now_then/2.jpg")
     }
 }
