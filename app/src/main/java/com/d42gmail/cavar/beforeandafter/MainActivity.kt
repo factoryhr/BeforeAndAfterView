@@ -10,5 +10,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         beforeAndAfterView.loadImagesByUrl("http://zg.plavatvornica.com/zrinjevac/now_then/1.jpg", "http://zg.plavatvornica.com/zrinjevac/now_then/2.jpg")
+        beforeAndAfterView.setRoundCorners(true)
     }
 }
