@@ -8,7 +8,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        beforeAndAfterView.loadImagesByUrl("http://zg.plavatvornica.com/zrinjevac/now_then/1.jpg", "http://zg.plavatvornica.com/zrinjevac/now_then/2.jpg")
+        //setContentView(R.layout.activity_main)
+        //beforeAndAfterView.loadImagesByUrl("http://zg.plavatvornica.com/zrinjevac/now_then/1.jpg", "http://zg.plavatvornica.com/zrinjevac/now_then/2.jpg")
+        //beforeAndAfterView.setRoundCorners(true)
     }
 }

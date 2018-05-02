@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="BeforeAndAfterView">
-        <attr name="beforeImageSrc" format="reference" />
-        <attr name="afterImageSrc" format="reference" />
-        <attr name="beforeImageUrl" format="string" />
-        <attr name="afterImageUrl" format="string" />
+        <attr name="rightImageSrc" format="reference" />
+        <attr name="leftImageSrc" format="reference" />
+        <attr name="rightImageUrl" format="string" />
+        <attr name="leftImageUrl" format="string" />
         <attr name="roundCorners" format="boolean" />
         <attr name="cornerMask" format="reference" />
         <attr name="progress" format="integer" />

@@ -16,7 +16,7 @@ import com.d42gmail.cavar.beforeandafter.utils.convertDpToPix
 import java.lang.Exception
 
 
-class BeforeAndAfterView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : RelativeLayout(context, attrs, defStyleAttr), ClipDrawableAsync.OnAfterImageLoaded {
+class BeforeAndAfterView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : RelativeLayout(context, attrs, defStyleAttr), ClipDrawableAsync.LoadingListener {
 
     constructor(context: Context?) : this(context, null, INIT_INT, INIT_INT)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, INIT_INT)
@@ -37,16 +37,16 @@ class BeforeAndAfterView(context: Context?, attrs: AttributeSet?, defStyleAttr: 
 
     private var ptSeekBar: SeekBar
     private var ivPlaceHolder: ImageView
-    private var ptBackgroundImageAfter: ImageView
-    private var ptBackgroundImageBefore: ImageView
+    private var ptBackgroundImageLeft: ImageView
+    private var ptBackgroundImageRight: ImageView
     private var vMask: View
 
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.before_and_after_layout, this)
         ptSeekBar = view.findViewById(R.id.ptSeekBar)
         ivPlaceHolder = view.findViewById(R.id.ivPlaceHolder)
-        ptBackgroundImageAfter = view.findViewById(R.id.ptBackgroundImageAfter)
-        ptBackgroundImageBefore = view.findViewById(R.id.ptBackgroundImageBefore)
+        ptBackgroundImageLeft = view.findViewById(R.id.ptBackgroundImageLeft)
+        ptBackgroundImageRight = view.findViewById(R.id.ptBackgroundImageRight)
         vMask = view.findViewById(R.id.vMask)
 
         getAttrsValues(context, attrs)
@@ -55,11 +55,11 @@ class BeforeAndAfterView(context: Context?, attrs: AttributeSet?, defStyleAttr: 
     private fun getAttrsValues(context: Context?, attrs: AttributeSet?) {
         val attributes: TypedArray? = context?.theme?.obtainStyledAttributes(attrs, R.styleable.BeforeAndAfterView, DEFAULT_INT, DEFAULT_INT)
         try {
-            beforeSrc = attributes?.getResourceId(R.styleable.BeforeAndAfterView_beforeImageSrc, INIT_INT)
-            afterSrc = attributes?.getResourceId(R.styleable.BeforeAndAfterView_afterImageSrc, INIT_INT)
+            beforeSrc = attributes?.getResourceId(R.styleable.BeforeAndAfterView_rightImageSrc, INIT_INT)
+            afterSrc = attributes?.getResourceId(R.styleable.BeforeAndAfterView_leftImageSrc, INIT_INT)
 
-            beforeUrl = attributes?.getString(R.styleable.BeforeAndAfterView_beforeImageUrl)
-            afterUrl = attributes?.getString(R.styleable.BeforeAndAfterView_afterImageUrl)
+            beforeUrl = attributes?.getString(R.styleable.BeforeAndAfterView_rightImageUrl)
+            afterUrl = attributes?.getString(R.styleable.BeforeAndAfterView_leftImageUrl)
 
             roundCorners = attributes?.getBoolean(R.styleable.BeforeAndAfterView_roundCorners, false)
             cornerMaskDrawable = attributes?.getResourceId(R.styleable.BeforeAndAfterView_cornerMask, R.drawable.round_edge_mask)
@@ -131,26 +131,26 @@ class BeforeAndAfterView(context: Context?, attrs: AttributeSet?, defStyleAttr: 
         ivPlaceHolder.setImageDrawable(drawable)
     }
 
-    fun loadImagesByUrl(imageAfterUrl: String, imageBeforeUrl: String) = ClipDrawableAsync<String>(ptBackgroundImageAfter, ptBackgroundImageBefore, ptSeekBar, validateProgress(progress!!), this).execute(imageAfterUrl, imageBeforeUrl)
+    fun loadImagesByUrl(imageLeftUrl: String, imageRightUrl: String) = ClipDrawableAsync<String>(ptBackgroundImageLeft, ptBackgroundImageRight, ptSeekBar, validateProgress(progress!!), this).execute(imageLeftUrl, imageRightUrl)
 
-    fun loadImagesBySrc(imageAfterSrc: Int, imageBeforeSrc: Int) = ClipDrawableAsync<Int>(ptBackgroundImageAfter, ptBackgroundImageBefore, ptSeekBar, validateProgress(progress!!), this).execute(imageAfterSrc, imageBeforeSrc)
+    fun loadImagesBySrc(imageLeftSrc: Int, imageRightSrc: Int) = ClipDrawableAsync<Int>(ptBackgroundImageLeft, ptBackgroundImageRight, ptSeekBar, validateProgress(progress!!), this).execute(imageLeftSrc, imageRightSrc)
 
-    fun loadImagesByUrl(imageAfterUrl: String, imageBeforeUrl: String, progress: Int) {
+    fun loadImagesByUrl(imageLeftUrl: String, imageRightUrl: String, progress: Int) {
         setProgress(progress)
-        ClipDrawableAsync<String>(ptBackgroundImageAfter, ptBackgroundImageBefore, ptSeekBar, validateProgress(progress), this).execute(imageAfterUrl, imageBeforeUrl)
+        ClipDrawableAsync<String>(ptBackgroundImageLeft, ptBackgroundImageRight, ptSeekBar, validateProgress(progress), this).execute(imageLeftUrl, imageRightUrl)
     }
 
-    fun loadImagesBySrc(imageAfterSrc: Int, imageBeforeSrc: Int, progress: Int) {
+    fun loadImagesBySrc(imageLeftSrc: Int, imageRightSrc: Int, progress: Int) {
         setProgress(progress)
-        ClipDrawableAsync<Int>(ptBackgroundImageAfter, ptBackgroundImageBefore, ptSeekBar, validateProgress(progress), this).execute(imageAfterSrc, imageBeforeSrc)
+        ClipDrawableAsync<Int>(ptBackgroundImageLeft, ptBackgroundImageRight, ptSeekBar, validateProgress(progress), this).execute(imageLeftSrc, imageRightSrc)
     }
 
-    override fun onLoadedFinished(loadedSuccess: Boolean) {
+    override fun loadingStatus(loadedSuccess: Boolean) {
         Handler().post {
             try {
                 if (loadedSuccess) {
-                    recalculateNewImageHeight(ptBackgroundImageBefore)
-                    recalculateNewImageHeight(ptBackgroundImageAfter)
+                    recalculateNewImageHeight(ptBackgroundImageRight)
+                    recalculateNewImageHeight(ptBackgroundImageLeft)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

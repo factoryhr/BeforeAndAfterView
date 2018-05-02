@@ -19,13 +19,13 @@
             android:overScrollMode="never">
 
             <ImageView
-                android:id="@+id/ptBackgroundImageBefore"
+                android:id="@+id/ptBackgroundImageRight"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:overScrollMode="never" />
 
             <ImageView
-                android:id="@+id/ptBackgroundImageAfter"
+                android:id="@+id/ptBackgroundImageLeft"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:overScrollMode="never" />
