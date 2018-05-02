@@ -37,8 +37,8 @@ XML:
        android:id="@+id/beforeAndAfterView"
        android:layout_width="match_parent"
        android:layout_height="240dp"
-       app:beforeImageSrc="@drawable/image_before"
-       app:afterImageSrc="@drawable/image_after"/>
+       app:rightImageSrc="@drawable/image_before"
+       app:leftImageSrc="@drawable/image_after"/>
    
 Code: 
 
@@ -51,8 +51,8 @@ XML:
        android:id="@+id/beforeAndAfterView"
        android:layout_width="match_parent"
        android:layout_height="240dp"
-       app:beforeImageUrl="http://zg.plavatvornica.com/zrinjevac/now_then/1.jpg"
-       app:afterImageUrl="http://zg.plavatvornica.com/zrinjevac/now_then/2.jpg"/>
+       app:rightImageUrl="http://zg.plavatvornica.com/zrinjevac/now_then/1.jpg"
+       app:leftImageUrl="http://zg.plavatvornica.com/zrinjevac/now_then/2.jpg"/>
    
    Code: 
    
@@ -63,10 +63,10 @@ XML:
 
 |  Attr         | Format        | Description    |
 | ------------- | ------------- | ------------- |
-| beforeImageSrc  | reference  | Drawable displayed on right side  |
-| afterImageSrc  | reference  | Drawable displayed on left side   |
-| beforeImageUrl  | string | Image from web displayed on right side|
-| afterImageUrl  | string  | Image from web displayed on left side  |
+| rightImageSrc  | reference  | Drawable displayed on right side  |
+| leftImageSrc  | reference  | Drawable displayed on left side   |
+| rightImageUrl  | string | Image from web displayed on right side|
+| leftImageUrl  | string  | Image from web displayed on left side  |
 | roundCorners  | boolean  | Round corners (white color)  |
 | cornerMask  | reference  | Mask which is placed on top of views (like round corners mask) |
 | progress  | integer  | Set thumb seek bar progress (0 - 100)|
@@ -79,10 +79,10 @@ XML:
 
 |  Method         | Description        | 
 | ------------- | ------------- | 
-| fun loadImagesByUrl(imageAfterUrl: String, imageBeforeUrl: String)  | Load two images from web  | 
-| fun loadImagesByUrl(imageAfterUrl: String, imageBeforeUrl: String, progress: Int)  | Load two images from web and set progress  | 
-| fun loadImagesBySrc(imageAfterSrc: Int, imageBeforeSrc: Int)  | Load two drawables  | 
-| fun loadImagesBySrc(imageAfterSrc: Int, imageBeforeSrc: Int, progress: Int)  | Load two drawables and set progress  | 
+| fun loadImagesByUrl(imageLeftUrl: String, imageRightUrl: String)  | Load two images from web  | 
+| fun loadImagesByUrl(imageLeftrUrl: String, imageRightUrl: String, progress: Int)  | Load two images from web and set progress  | 
+| fun loadImagesBySrc(imageLeftSrc: Int, imageRightSrc: Int)  | Load two drawables  | 
+| fun loadImagesBySrc(imageLeftSrc: Int, imageRightSrc: Int, progress: Int)  | Load two drawables and set progress  | 
 | fun setRoundCorners(roundCorners: Boolean)  | Set round corners (white)  | 
 | fun setMask(drawable: Drawable)  | Mask which is placed on top of views (like round corners mask)  | 
 | fun setProgressPadding(start: Int, top: Int, end: Int, bottom: Int)  | Used for thumb calibration  | 
