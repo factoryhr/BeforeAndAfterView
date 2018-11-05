@@ -10,8 +10,6 @@ import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 
-
-
 fun convertDpToPix(dp: Int, context: Context): Int {
     val metric = context.resources.displayMetrics
     return (dp * (metric.densityDpi / DisplayMetrics.DENSITY_DEFAULT))
